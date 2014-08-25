@@ -1,0 +1,19 @@
+<h1>Test#new</h1>
+<p>Find me in app/views/test/new.html.erb</p>
+<h2><%= l(:label_spent_time) %></h2>
+
+<%#= labelled_form_for @time_entry, :url => time_entries_path do |f| %>
+<%= labelled_form_for @time_entry, :method => :POST  do |f| %>
+  <%= f.text_field :issue_id, :size => 6 %><br>
+  <%= f.text_field :spent_on, :size => 10, :required => true %><%= calendar_for('time_entry_spent_on') %>
+  <br>
+  <%= f.text_field :hours, :size => 6, :required => true %><br>
+  <%= f.text_field :comments, :size => 100, :maxlength => 255 %><br>
+  <%= f.text_field :activity_id, :size => 4 %> <br>
+  <br>
+  <%= f.submit("create") %>
+  <%#= submit_tag l(:button_create) %>
+  <%= submit_tag l(:button_create_and_continue), :name => 'continue' %>
+<% end %>
+
+<b>Radha</b>

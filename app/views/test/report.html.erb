@@ -1,0 +1,41 @@
+<h1>Test#report</h1>
+<p>Find me in app/views/test/report.html.erb</p>
+
+<h1>Test report</h1>
+<div>
+  
+</div>
+<div>
+<ol>
+<% @projects.each do |project| %>
+	<li><%= project.name %>
+	<%= project.id %></li>
+	<% end %>
+</ol>
+</div>
+<div>
+<% @projects %>
+</div><br/><br/>
+
+<div>
+<ol>
+<% @issues.each do |issue| %>
+	<% issue.subject %>
+	<% end %>
+</ol>
+</div>
+
+
+<div>
+<ol>
+<% @issues.each do |issue| %>
+	<% if issue.project_id==6 %>
+	<li><%= issue.subject %></li>
+	<% end %>
+	<% end %>
+</ol>
+</div>
+
+<% @time_entries.each do |value| %>
+    <p><%= value.comments %></p>
+<% end %>
