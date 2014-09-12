@@ -21,6 +21,7 @@ require 'cgi'
 class Unauthorized < Exception; end
 
 class ApplicationController < ActionController::Base
+protect_from_forgery with: :null_session, if: Proc.new { |c| c.request.format == 'application/json' }
   include Redmine::I18n
   include Redmine::Pagination
   include RoutesHelper
@@ -31,7 +32,7 @@ class ApplicationController < ActionController::Base
   class_attribute :model_object
 
   layout 'base'
-
+  
   protect_from_forgery
   def handle_unverified_request
     super

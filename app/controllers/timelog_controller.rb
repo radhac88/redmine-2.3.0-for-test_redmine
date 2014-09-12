@@ -119,6 +119,7 @@ class TimelogController < ApplicationController
 
   def create
     @time_entry ||= TimeEntry.new(:project => @project, :issue => @issue, :user => User.current, :spent_on => User.current.today)
+
     @time_entry.safe_attributes = params[:time_entry]
 
     call_hook(:controller_timelog_edit_before_save, { :params => params, :time_entry => @time_entry })

@@ -19,10 +19,20 @@ RedmineApp::Application.routes.draw do
   get "test/report"
 
   get "test/new"
-
+  post "test/new"
   get "test/create"
+  #match '/time_entry_temps' => 'test#new', via: [:get, :post]
+
+  resources :time_entry_temps, :controller => 'test' do
+    collection do
+      get 'report'
+      get 'bulk_edit'
+      post 'bulk_update'
+    end
+  end
 
   root :to => 'welcome#index', :as => 'home'
+
 
   match 'login', :to => 'account#login', :as => 'signin', :via => [:get, :post]
   match 'logout', :to => 'account#logout', :as => 'signout', :via => [:get, :post]
